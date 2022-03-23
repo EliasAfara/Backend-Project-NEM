@@ -38,4 +38,46 @@ router.post('/', async (req, res, next) => {
   res.status(201).json({ product });
 });
 
+router.get('/:id', async (req, res, next) => {
+  const productID = req.params.id;
+  let product = await Product.findById(productID);
+
+  if (!product) {
+    res.status(404).json({ message: 'No product' });
+  }
+
+  res.status(200).json({ product });
+});
+
+router.patch('/:id', async (req, res, next) => {
+  const productID = req.params.id;
+  const { name, description, price, imgURL, quantity, isFeatured } = req.body;
+  let product = await Product.findByIdAndUpdate(productID, {
+    name,
+    description,
+    price,
+    imgURL,
+    quantity,
+    isFeatured,
+  });
+
+  product = await product.save();
+
+  if (!product) {
+    return res.status(500).json({ message: 'Cannot save product' });
+  }
+
+  res.status(200).json({ product });
+});
+
+router.delete('/:id', async (req, res, next) => {
+  const productID = req.params.id;
+  let product = await Product.findByIdAndRemove(productID);
+  if (!product) {
+    return res.status(500).json({ message: 'Cannot delete product' });
+  }
+
+  res.status(200).json({ message: 'Product deleted' });
+});
+
 module.exports = router;
