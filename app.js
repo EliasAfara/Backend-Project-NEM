@@ -2,14 +2,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+const productsRouter = require('./routes/product-routes');
+
 // Middlewares
 const app = express();
 
 // Routes
+app.use('/Products', productsRouter);
 
-app.get('/', (req, res) => {
-  res.send('Hello Elias');
-});
+// app.get('/', (req, res) => {
+//   res.send('Hello Elias');
+// });
 
 // Connections and PORT
 mongoose
