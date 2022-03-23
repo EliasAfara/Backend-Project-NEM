@@ -1,0 +1,25 @@
+{
+  "name": "backend-project-nem",
+  "version": "1.0.0",
+  "description": "Getting familiar with NodeJS and Building Backend with MongoDB Cloud Database.",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EliasAfara/Backend-Project-NEM.git"
+  },
+  "author": "Elias Afara",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EliasAfara/Backend-Project-NEM/issues"
+  },
+  "homepage": "https://github.com/EliasAfara/Backend-Project-NEM#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongoose": "^6.2.8",
+    "nodemon": "^2.0.15"
+  }
+}
