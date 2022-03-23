@@ -6,9 +6,9 @@ const productsRouter = require('./routes/product-routes');
 
 // Middlewares
 const app = express();
-
+app.use(express.json());
 // Routes
-app.use('/Products', productsRouter);
+app.use('/products', productsRouter);
 
 // app.get('/', (req, res) => {
 //   res.send('Hello Elias');

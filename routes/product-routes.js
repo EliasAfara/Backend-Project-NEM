@@ -14,4 +14,28 @@ router.get('/', async (req, res, next) => {
   res.status(200).json({ products });
 });
 
+router.post('/', async (req, res, next) => {
+  console.log(req.body);
+  const { name, description, price, imgURL, quantity, isFeatured } = req.body;
+  let product = new Product({
+    name,
+    description,
+    price,
+    imgURL,
+    quantity,
+    isFeatured,
+  });
+
+  product = await product.save();
+
+  if (!product) {
+    return res.status(500).json({
+      message: 'Cannot add product',
+    });
+    next();
+  }
+
+  res.status(201).json({ product });
+});
+
 module.exports = router;
